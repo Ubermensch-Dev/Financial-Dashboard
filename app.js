@@ -83,7 +83,7 @@ saving.innerHTML = parseInt(income.innerHTML)- parseInt(-expense.innerHTML)
 // Update Chart.js Pie Chart
 function updateChart() {
   myChart.data.datasets[0].data = [
-    parseInt(saving.innerHTML),
+    parseInt(saving.innerHTML)<0? 0 : parseInt(saving.innerHTML) ,
     parseInt(expense.innerHTML),
   ];
   myChart.update();

@@ -16,7 +16,10 @@ Dark Gray	Text (for better contrast)	#2C3E50	 */
     --white: #FFFFFF;
     --dark-grey: #2C3E50;
 }
-
+a{
+    text-decoration: none;
+    color: inherit;
+}
 * {
     padding: 0;
     margin: 0;
@@ -174,7 +177,7 @@ header {
     visibility: hidden;
 }
 
-.add-transition-window form {
+.add-transition-window form ,.add-goal-window form {
     color: var(--dark-grey);
 
     display: flex;
@@ -195,7 +198,15 @@ header {
     border: solid 2px var(--dark-grey);
 
 }
+.add-goal-window input,
+.add-goal-window button,
+.add-goal-window select{
+    width: 32%;
+    height: 60%;
+    border-radius: 20px;
+    border: solid 2px var(--dark-grey);
 
+}
 .add-transition-window select {
     background-color: var(--white);
 }
@@ -222,5 +233,7 @@ max-width: 100%;
     margin: 0 0 10px 10px;
 
 }
-
+.add-goal-window{
+    width: 60vw;
+}
 

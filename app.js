@@ -1,14 +1,16 @@
 let Transition_Add_Button = document.querySelector(".add_trans");
 let Transition_Add_Window = document.querySelector(".add-transition-window");
+let Goal_Add_Button = document.querySelector(".add_goal");
+let Goal_Add_Window = document.querySelector(".add-goal-window");
 let add_form = document.querySelector(".add-transition-window form");
 let income = document.querySelector(".incomeamt");
 let expense = document.querySelector(".expenceamt");
 let saving = document.querySelector(".savingamt");
 let transitions = [];
-Transition_Add_Button.addEventListener("click", (event) => {
-  Transition_Add_Window.classList.add("visiblity");
-  event.stopPropagation();
-});
+
+visiblityon(Goal_Add_Button , Goal_Add_Window)
+visiblityon(Transition_Add_Button , Transition_Add_Window);
+
 
 document.addEventListener("click", (event) => {
   // Check if the click is NOT inside the button or the transition window
@@ -17,6 +19,12 @@ document.addEventListener("click", (event) => {
     !Transition_Add_Button.contains(event.target)
   ) {
     Transition_Add_Window.classList.remove("visiblity");
+  }
+  if (
+    !Goal_Add_Window.contains(event.target) &&
+    !Goal_Add_Button.contains(event.target)
+  ) {
+    Goal_Add_Window.classList.remove("visiblity");
   }
 });
 add_form.addEventListener("submit", (e) => {
@@ -79,4 +87,10 @@ function updateChart() {
     parseInt(expense.innerHTML),
   ];
   myChart.update();
+}
+function visiblityon(button , window){
+button.addEventListener("click", ( event) => {
+  window.classList.add("visiblity");
+  event.stopPropagation();
+});
 }

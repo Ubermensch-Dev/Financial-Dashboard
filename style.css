@@ -116,7 +116,7 @@ header {
     background-color: var(--soft_gray);
     display: flex;    
     justify-content: center;
-margin: 0 1% 0 1%;
+/* margin: 0 1% 0 1%; */
     border-radius: 17px;
 }
 
@@ -164,7 +164,7 @@ margin: 0 1% 0 1%;
     margin: 0 0 0 0;
 }
 
-.add-transition-window {
+.add-transition-window , .add-goal-window{
     position: absolute;
     width: 70%;
     height: 10vh;

@@ -239,4 +239,14 @@ max-width: 100%;
 .add-goal-window{
     width: 60vw;
 }
+.goal-list li{
+    display: flex;
+    width: 100vw;
+    height: 5vh;
+}
 
+.goal-list-item{
+    background-color: var(--gold);
+    height: 80%;
+    width: 20vw;
+}

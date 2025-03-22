@@ -116,7 +116,7 @@ function updating_goal_UI() {
 
   goals.forEach((goal) => {
     const li = document.createElement("li");
-    li.innerHTML = `${goal.name} <div class = "goal-list-item"></div> ${goal.amount}/${goal.saving} <div class = "goal_list_add">+</div>    <input type="number">`;
+    li.innerHTML = `${goal.name} <div class = "goal-list-item"></div> ${goal.amount} <div class = "goal_list_add">+</div>    <input type="number">`;
     goal_list.prepend(li)
   });
 

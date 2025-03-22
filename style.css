@@ -16,10 +16,12 @@ Dark Gray	Text (for better contrast)	#2C3E50	 */
     --white: #FFFFFF;
     --dark-grey: #2C3E50;
 }
-a{
+
+a {
     text-decoration: none;
     color: inherit;
 }
+
 * {
     padding: 0;
     margin: 0;
@@ -65,8 +67,7 @@ header {
 .money_div {
     width: 48%;
     height: 100%;
-    display: flex
-;
+    display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
 
@@ -117,9 +118,9 @@ header {
     width: 48%;
     height: 100%;
     background-color: var(--soft_gray);
-    display: flex;    
+    display: flex;
     justify-content: center;
-/* margin: 0 1% 0 1%; */
+    /* margin: 0 1% 0 1%; */
     border-radius: 17px;
 }
 
@@ -162,7 +163,8 @@ header {
     background-color: var(--soft_gray);
     margin: 0 0 50px 0;
 }
-.goals{
+
+.goals {
     height: auto;
 }
 
@@ -170,7 +172,8 @@ header {
     margin: 0 0 0 0;
 }
 
-.add-transition-window , .add-goal-window{
+.add-transition-window,
+.add-goal-window {
     position: absolute;
     width: 70%;
     height: 10vh;
@@ -180,7 +183,8 @@ header {
     visibility: hidden;
 }
 
-.add-transition-window form ,.add-goal-window form {
+.add-transition-window form,
+.add-goal-window form {
     color: var(--dark-grey);
 
     display: flex;
@@ -201,15 +205,17 @@ header {
     border: solid 2px var(--dark-grey);
 
 }
+
 .add-goal-window input,
 .add-goal-window button,
-.add-goal-window select{
+.add-goal-window select {
     width: 32%;
     height: 60%;
     border-radius: 20px;
     border: solid 2px var(--dark-grey);
 
 }
+
 .add-transition-window select {
     background-color: var(--white);
 }
@@ -218,35 +224,27 @@ header {
 .visiblity {
     visibility: visible;
 }
-.transition-list{
+
+.transition-list {
 
     display: flex;
     flex-direction: column;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     height: auto;
     width: auto;
-max-height: 100%;
-max-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
 
 }
 
-.transition-list li{
+.transition-list li {
     display: inline-block;
     font-size: 1.7rem;
     margin: 0 0 10px 10px;
 
 }
-.add-goal-window{
+
+.add-goal-window {
     width: 60vw;
 }
-.goal-list li{
-    display: flex;
-    width: 100vw;
-    height: 5vh;
-}
 
-.goal-list-item{
-    background-color: var(--gold);
-    height: 80%;
-    width: 20vw;
-}

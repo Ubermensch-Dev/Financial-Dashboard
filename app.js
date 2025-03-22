@@ -113,11 +113,17 @@ goal_form.addEventListener("submit", (e) => {
 });
 function updating_goal_UI() {
   let goal_list = document.querySelector(".goal-list");
-
+  goal_list.innerHTML = "";
   goals.forEach((goal) => {
     const li = document.createElement("li");
-    li.innerHTML = `${goal.name} <div class = "goal-list-item"></div> ${goal.amount} <div class = "goal_list_add">+</div>    <input type="number">`;
-    goal_list.prepend(li)
+    li.innerHTML = `${goal.name}
+    <div class = "goal_list_item"></div> 
+    <p >${goal.amount}</p> 
+    <div class = "goal_list_add">
+    +
+    <input type="number">
+    </div>
+        `;
+    goal_list.prepend(li);
   });
-
 }

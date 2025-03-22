@@ -3,6 +3,7 @@ let Transition_Add_Window = document.querySelector(".add-transition-window");
 let Goal_Add_Button = document.querySelector(".add_goal");
 let Goal_Add_Window = document.querySelector(".add-goal-window");
 let add_form = document.querySelector(".add-transition-window form");
+let goal_form = document.querySelector(".add-goal-window form")
 let income = document.querySelector(".incomeamt");
 let expense = document.querySelector(".expenceamt");
 let saving = document.querySelector(".savingamt");
@@ -27,6 +28,9 @@ document.addEventListener("click", (event) => {
     Goal_Add_Window.classList.remove("visiblity");
   }
 });
+
+// submiting button for adding transition
+
 add_form.addEventListener("submit", (e) => {
   e.preventDefault();
   let name = document.querySelector("#trans-name").value;
@@ -94,3 +98,12 @@ button.addEventListener("click", ( event) => {
   event.stopPropagation();
 });
 }
+goal_form.addEventListener("submit", (e) => {
+e.preventDefault();
+let name = document.querySelector("#goal-name").value;
+let amount = document.querySelector("#goal-amount").value;
+if (name == "" || amount == "") {
+  alert("data can't be empty");
+  return;
+}
+})

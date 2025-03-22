@@ -3,15 +3,15 @@ let Transition_Add_Window = document.querySelector(".add-transition-window");
 let Goal_Add_Button = document.querySelector(".add_goal");
 let Goal_Add_Window = document.querySelector(".add-goal-window");
 let add_form = document.querySelector(".add-transition-window form");
-let goal_form = document.querySelector(".add-goal-window form")
+let goal_form = document.querySelector(".add-goal-window form");
 let income = document.querySelector(".incomeamt");
 let expense = document.querySelector(".expenceamt");
 let saving = document.querySelector(".savingamt");
 let transitions = [];
+let goals = [];
 
-visiblityon(Goal_Add_Button , Goal_Add_Window)
-visiblityon(Transition_Add_Button , Transition_Add_Window);
-
+visiblityon(Goal_Add_Button, Goal_Add_Window);
+visiblityon(Transition_Add_Button, Transition_Add_Window);
 
 document.addEventListener("click", (event) => {
   // Check if the click is NOT inside the button or the transition window
@@ -45,8 +45,8 @@ add_form.addEventListener("submit", (e) => {
     amount: trans_type == "income" ? amount : -amount,
     trans_type,
   };
-    transitions.push(transition);
-  changeamount(transition , income);
+  transitions.push(transition);
+  changeamount(transition, income);
 
   // localStorage.setItem("transactions" ,JSON.stringify(transitions));
   updatingUI();
@@ -54,7 +54,6 @@ add_form.addEventListener("submit", (e) => {
 });
 
 function updatingUI() {
-  
   let trans_list = document.querySelector(".transition-list");
 
   trans_list.innerHTML = "";
@@ -67,43 +66,58 @@ function updatingUI() {
     li.style.color = transition.amount > 0 ? "#27AE60" : "#E74C3C";
     trans_list.prepend(li);
   });
-
-
 }
-function changeamount(transaction ){
- 
-  if(transaction.trans_type ==  "income"){ 
-    income.innerHTML = parseInt(transaction.amount)+parseInt(income.innerHTML)
+function changeamount(transaction) {
+  if (transaction.trans_type == "income") {
+    income.innerHTML =
+      parseInt(transaction.amount) + parseInt(income.innerHTML);
+  } else {
+    expense.innerHTML =
+      parseInt(transaction.amount) + parseInt(expense.innerHTML);
+  }
 
-}else{
-  expense.innerHTML = parseInt(transaction.amount)+parseInt(expense.innerHTML)
-}
-
-saving.innerHTML = parseInt(income.innerHTML)- parseInt(-expense.innerHTML)
-// saving.innerHTML = saving.innerHTML
+  saving.innerHTML = parseInt(income.innerHTML) - parseInt(-expense.innerHTML);
+  // saving.innerHTML = saving.innerHTML
   updateChart();
 }
 
 // Update Chart.js Pie Chart
 function updateChart() {
   myChart.data.datasets[0].data = [
-    parseInt(saving.innerHTML)<0? 0 : parseInt(saving.innerHTML) ,
+    parseInt(saving.innerHTML) < 0 ? 0 : parseInt(saving.innerHTML),
     parseInt(expense.innerHTML),
   ];
   myChart.update();
 }
-function visiblityon(button , window){
-button.addEventListener("click", ( event) => {
-  window.classList.add("visiblity");
-  event.stopPropagation();
-});
+function visiblityon(button, window) {
+  button.addEventListener("click", (event) => {
+    window.classList.add("visiblity");
+    event.stopPropagation();
+  });
 }
 goal_form.addEventListener("submit", (e) => {
-e.preventDefault();
-let name = document.querySelector("#goal-name").value;
-let amount = document.querySelector("#goal-amount").value;
-if (name == "" || amount == "") {
-  alert("data can't be empty");
-  return;
+  e.preventDefault();
+  let name = document.querySelector("#goal-name").value;
+  let amount = document.querySelector("#goal-amount").value;
+  if (name == "" || amount == "" || amount < 1) {
+    alert("data can't be empty");
+    return;
+  }
+  const goal = {
+    name,
+    amount,
+    saving,
+  };
+  goals.push(goal);
+  updating_goal_UI();
+});
+function updating_goal_UI() {
+  let goal_list = document.querySelector(".goal-list");
+
+  goals.forEach((goal) => {
+    const li = document.createElement("li");
+    li.innerHTML = `${goal.name} <div class = "goal-list-item"></div> ${goal.amount}/${goal.saving} <div class = "goal_list_add">+</div>    <input type="number">`;
+    goal_list.prepend(li)
+  });
+
 }
-})

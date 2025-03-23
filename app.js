@@ -115,23 +115,40 @@ goal_form.addEventListener("submit", (e) => {
 });
 function updating_goal_UI() {
   let goal_list = document.querySelector(".goal-list");
-goal_list.innerHTML = "";
-  goals.forEach((goal , index) => {
+  goal_list.innerHTML = "";
+  goals.forEach((goal, index) => {
     const li = document.createElement("li");
     li.innerHTML = `<p>${goal.name}</p>
-    <div class = "goal_list_item"></div> 
-    <p>${goal.amount }</p>
+    <div class = "goal_list_item">
+    <div></div></div> 
+    <p>${goal.amount}</p>
      / 
-   <p  id="saving-${index}">${goal.saving }</p> 
-    <div class = "goal_list_add">
-    +
+   <p  id="saving-${index}">${goal.saving}</p> 
+    <button class = "goal_list_add" id ="button-${index}" onclick="visibiliy_num(${index})">+</button>
        <div class = "goal_list_num" ><input type="number " id="input-${index}" >
        <button onclick="updateSaving(${index})">+</button>
-       </div>
+      
     </div>
         `;
+
     goal_list.prepend(li);
   });
+}
+function visibiliy_num(index) {
+  let div = document.querySelector(`#input-${index}`).parentElement;
+  console.log(div);
+  div.style.visibility = "visible";
+  document.addEventListener("click", function hideInput(event) {
+    if (!div.contains(event.target) && event.target.tagName !== "BUTTON") {
+      div.style.visibility = "hidden";
+      document.removeEventListener("click", hideInput);
+    }
+  });
+}
+function visibiliy_mun(index) {
+  let div = document.querySelector(`#input-${index}`).parentElement;
+  console.log(div);
+  div.style.visibility = "hidden";
 }
 function updateSaving(index) {
   let input = document.querySelector(`#input-${index}`);
@@ -143,6 +160,7 @@ function updateSaving(index) {
     goals[index].saving += value; // Update the saving amount
     savingDisplay.textContent = goals[index].saving; // Update UI
     input.value = ""; // Clear input field
+    visibiliy_mun(index);
   } else {
     alert("Enter a valid amount");
   }

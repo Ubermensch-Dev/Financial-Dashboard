@@ -99,6 +99,7 @@ goal_form.addEventListener("submit", (e) => {
   e.preventDefault();
   let name = document.querySelector("#goal-name").value;
   let amount = document.querySelector("#goal-amount").value;
+  let saving = 0;
   if (name == "" || amount == "" || amount < 1) {
     alert("data can't be empty");
     return;
@@ -110,20 +111,39 @@ goal_form.addEventListener("submit", (e) => {
   };
   goals.push(goal);
   updating_goal_UI();
+  goal_form.reset();
 });
 function updating_goal_UI() {
   let goal_list = document.querySelector(".goal-list");
-  goal_list.innerHTML = "";
-  goals.forEach((goal) => {
+goal_list.innerHTML = "";
+  goals.forEach((goal , index) => {
     const li = document.createElement("li");
-    li.innerHTML = `${goal.name}
+    li.innerHTML = `<p>${goal.name}</p>
     <div class = "goal_list_item"></div> 
-    <p >${goal.amount}</p> 
+    <p>${goal.amount }</p>
+     / 
+   <p  id="saving-${index}">${goal.saving }</p> 
     <div class = "goal_list_add">
     +
-    <input type="number">
+       <div class = "goal_list_num" ><input type="number " id="input-${index}" >
+       <button onclick="updateSaving(${index})">+</button>
+       </div>
     </div>
         `;
     goal_list.prepend(li);
   });
+}
+function updateSaving(index) {
+  let input = document.querySelector(`#input-${index}`);
+  let savingDisplay = document.querySelector(`#saving-${index}`);
+
+  let value = parseInt(input.value);
+
+  if (!isNaN(value) && value > 0) {
+    goals[index].saving += value; // Update the saving amount
+    savingDisplay.textContent = goals[index].saving; // Update UI
+    input.value = ""; // Clear input field
+  } else {
+    alert("Enter a valid amount");
+  }
 }

@@ -118,10 +118,10 @@ function updating_goal_UI() {
   goal_list.innerHTML = "";
   goals.forEach((goal, index) => {
     const li = document.createElement("li");
-    li.innerHTML = `<p>${goal.name}</p>
+    li.innerHTML = `<p id = "name-${index}">${goal.name}</p>
     <div class = "goal_list_item">
-    <div></div></div> 
-    <p>${goal.amount}</p>
+    <div id="div-${index}"></div></div> 
+    <p id="amount-${index}">${goal.amount}</p>
      / 
    <p  id="saving-${index}">${goal.saving}</p> 
     <button class = "goal_list_add" id ="button-${index}" onclick="visibiliy_num(${index})">+</button>
@@ -153,15 +153,34 @@ function visibiliy_mun(index) {
 function updateSaving(index) {
   let input = document.querySelector(`#input-${index}`);
   let savingDisplay = document.querySelector(`#saving-${index}`);
-
+  let div = document.querySelector(`#div-${index}`);
+  let amount = document.querySelector(`#amount-${index}`); // Moved this up
+  let amountValue = parseInt(amount.textContent); // Now it's defined properly
   let value = parseInt(input.value);
 
-  if (!isNaN(value) && value > 0) {
-    goals[index].saving += value; // Update the saving amount
+  let name = document.querySelector(`#name-${index}`).innerHTML
+  if (
+    !isNaN(value) &&
+    value > 0 &&
+    goals[index].saving + value <= amountValue
+  ) {
+    goals[index].saving += value; // Update saving amount
     savingDisplay.textContent = goals[index].saving; // Update UI
     input.value = ""; // Clear input field
     visibiliy_mun(index);
   } else {
     alert("Enter a valid amount");
   }
+  const transition = {
+    name,
+    value,
+    expense,
+  };
+  transitions.push(transition);
+  changeamount(transition, income);
+
+  // localStorage.setItem("transactions" ,JSON.stringify(transitions));
+  updatingUI();
+  div.style.width = (goals[index].saving / amountValue) * 100 + "%"; // Update progress bar
+  console.log(div.style.width + " fdds");
 }

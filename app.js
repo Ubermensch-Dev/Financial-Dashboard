@@ -154,8 +154,8 @@ function updateSaving(index) {
   let input = document.querySelector(`#input-${index}`);
   let savingDisplay = document.querySelector(`#saving-${index}`);
   let div = document.querySelector(`#div-${index}`);
-  let amount = document.querySelector(`#amount-${index}`); // Moved this up
-  let amountValue = parseInt(amount.textContent); // Now it's defined properly
+  let amount1 = document.querySelector(`#amount-${index}`); // Moved this up
+  let amountValue = parseInt(amount1.textContent); // Now it's defined properly
   let value = parseInt(input.value);
 
   let name = document.querySelector(`#name-${index}`).innerHTML
@@ -171,9 +171,11 @@ function updateSaving(index) {
   } else {
     alert("Enter a valid amount");
   }
+  let amount = -value;
+  console.log(value)
   const transition = {
     name,
-    value,
+    amount,
     expense,
   };
   transitions.push(transition);
@@ -182,5 +184,5 @@ function updateSaving(index) {
   // localStorage.setItem("transactions" ,JSON.stringify(transitions));
   updatingUI();
   div.style.width = (goals[index].saving / amountValue) * 100 + "%"; // Update progress bar
-  console.log(div.style.width + " fdds");
+
 }

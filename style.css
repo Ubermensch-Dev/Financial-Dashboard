@@ -16,6 +16,23 @@ Dark Gray	Text (for better contrast)	#2C3E50	 */
     --white: #FFFFFF;
     --dark-grey: #2C3E50;
 }
+.dark_mode{
+
+
+        --dark_blue:  #3A7ABD;   /* Almost black-blue for background */
+        --light_blue: #F0F6FC ;   /* Vibrant blue for buttons & highlights */
+        --soft_gray: #161B22;   /* Darker gray for card backgrounds */
+        --green: #1F8D4B;       /* Bold green for income/positive values */
+        --red: #C0392B;         /* Strong red for expenses/negative values */
+        --gold: #D4AF37;        /* Deep gold for important figures */
+        --white:#0D1117;       /* Near-white for text (not pure white, to avoid eye strain) */
+        --dark-grey: #8B949E;   /* Lighter gray for secondary text */
+ 
+      /* Dark navy-gray for text contrast */
+ 
+    
+
+}
 
 a {
     text-decoration: none;
@@ -31,6 +48,7 @@ a {
 body {
     width: 100vw;
     position: relative;
+    background-color: var(--white);
 }
 
 header {
@@ -341,4 +359,16 @@ header {
     font-size: 2rem;
     font-weight: 900;
     /* margin: 0 0 0 135px; */
+}
+
+.setting_menu{
+    height: 60vh;
+    width: 80vw;
+    border-radius: 25px;
+    background-color: var(--soft_gray);
+    position: absolute;
+    top: 55px;
+    left: 30px;
+    border: 3px solid var(--light_blue);
+    display: none;
 }

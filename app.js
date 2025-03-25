@@ -8,6 +8,7 @@ let income = document.querySelector(".incomeamt");
 let expense = document.querySelector(".expenceamt");
 let saving = document.querySelector(".savingamt");
 let transitions = [];
+let transaction_main = [];
 let goals = [];
 
 visiblityon(Goal_Add_Button, Goal_Add_Window);
@@ -31,6 +32,7 @@ document.addEventListener("click", (event) => {
 
 // submiting button for adding transition
 
+
 add_form.addEventListener("submit", (e) => {
   e.preventDefault();
   let name = document.querySelector("#trans-name").value;
@@ -40,19 +42,29 @@ add_form.addEventListener("submit", (e) => {
     alert("data can't be empty");
     return;
   }
+let time = get_time();
   const transition = {
     name,
     amount: trans_type == "income" ? amount : -amount,
     trans_type,
+    time
   };
   transitions.push(transition);
-  changeamount(transition, income);
+  transaction_main.push(transition);
+  changeamount(transition);
 
-  // localStorage.setItem("transactions" ,JSON.stringify(transitions));
+  localStorage.setItem("transactions" ,JSON.stringify(transitions));
   updatingUI();
   add_form.reset();
 });
+function get_time(){
+  const now = new Date();
 
+  const date = now.toLocaleDateString('en-GB'); // DD/MM/YYYY format
+  const time = now.toLocaleTimeString(); // HH:MM:SS AM/PM format
+  
+  return(`${date} ${time}`); 
+}
 function updatingUI() {
   let trans_list = document.querySelector(".transition-list");
 
@@ -112,6 +124,7 @@ goal_form.addEventListener("submit", (e) => {
   goals.push(goal);
   updating_goal_UI();
   goal_form.reset();
+
 });
 function updating_goal_UI() {
   let goal_list = document.querySelector(".goal-list");
@@ -179,10 +192,24 @@ function updateSaving(index) {
     expense,
   };
   transitions.push(transition);
+  transaction_main.push(transition);
   changeamount(transition, income);
 
   // localStorage.setItem("transactions" ,JSON.stringify(transitions));
   updatingUI();
   div.style.width = (goals[index].saving / amountValue) * 100 + "%"; // Update progress bar
 
+}
+function main_trans_add(){
+   let trans_list = document.querySelector(".ul_list");
+
+// trans_list.innerHTML = "";
+
+transaction_main.forEach((transition) => {
+  const li = document.createElement("li");
+  console.log(li , "SDsdfd")
+  li.innerHTML = `${transition.name} ${transition.time} ${transition.trans_type} ${transition.amount}`;
+  li.style.color = transition.amount > 0 ? "#27AE60" : "#E74C3C";
+  
+});
 }

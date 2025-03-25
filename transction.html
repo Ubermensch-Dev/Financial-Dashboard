@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css ">
+    <link rel="stylesheet" href="./transition.css">
     <title>Transctions</title>
+
 </head>
+
 <body>
-    
+    <header>
+        <ul class="main_list">
+            <li class="main_list_item"><a href="./index.html">Home</a></li>
+            <li class="main_list_item"><a href="#">Transctions</a> </li>
+            <li class="main_list_item">Setting</li>
+        </ul>
+        <h5 id="heading">USER's Transctions</h5>
+    </header>
+    <main>
+
+        <ul class="ul_list">
+            <li id="list_first_item">
+                <p>Particular</p>
+                <p>Date</p>
+                <p>Type</p>
+                <p>Amount</p>
+            </li>
+        </ul>
+    </main>
+    <script src="./app.js"></script>
+    <script>
+       let trs = JSON.parse(localStorage.getItem("transactions")) || [];  
+
+function main_list_load() {
+    let trans_list = document.querySelector(".ul_list");
+
+    trs.forEach((transition) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<p>${transition.name}</p><p>${transition.time}</p><p>${transition.trans_type}</p><p>${transition.amount}</p>`;
+        li.style.color = transition.amount > 0 ? "#27AE60" : "#E74C3C";
+
+        trans_list.appendChild(li); // Append the <li> to the list
+    });
+}
+
+main_list_load(); // Call function after defining it
+
+    </script>
 </body>
+
 </html>

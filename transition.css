@@ -1,0 +1,28 @@
+.ul_list{
+    width: 100vw;
+    height: auto;
+    min-width: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin : 20px 0 0 0 ;
+}
+.ul_list li{
+    width: 80%;
+    display: flex;
+    color: var(--dark-grey);
+    font-weight: 500;
+    font-size: 1.5rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+}
+
+#list_first_item{
+    color: var(--dark-grey);
+    font-weight: 600;
+    font-size: 1.6rem;
+   
+}

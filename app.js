@@ -10,11 +10,51 @@ let saving = document.querySelector(".savingamt");
 let transitions = [];
 let transaction_main = [];
 let goals = [];
+let setting = document.querySelector(".setting_but");
+let setting_div = document.querySelector(".setting_but div")
+let on = false;
+let body = document.querySelector("body");
+let i = document.querySelectorAll("i")
+
+setting.addEventListener("click",()=>{
+
+setting_div.classList.add("visiblity")
+
+})
 
 visiblityon(Goal_Add_Button, Goal_Add_Window);
 visiblityon(Transition_Add_Button, Transition_Add_Window);
 
+window.onload = () => {
+  let body = document.body;
+  let on = JSON.parse(localStorage.getItem("on")) || false; // Convert string to boolean
+
+  if (on) {
+    body.classList.add("dark_mode");
+  } else {
+    body.classList.remove("dark_mode");
+  }
+};
+
 document.addEventListener("click", (event) => {
+  console.log(event.target);
+    let body = document.body;
+  
+  let mode_but = document.querySelector("#mode_butt");
+
+  if (event.target === mode_but || [...i].some(o => o === event.target)) {
+    let on = body.classList.toggle("dark_mode"); // Toggle class
+    localStorage.setItem("on", JSON.stringify(on));
+}
+  
+  if (
+    
+    !setting_div.contains(event.target) &&
+    !setting.contains(event.target) ||
+    event.target === close
+  ) {
+    setting_div.classList.remove("visiblity");
+  }
   // Check if the click is NOT inside the button or the transition window
   if (
     !Transition_Add_Window.contains(event.target) &&

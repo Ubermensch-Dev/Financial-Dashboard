@@ -27,7 +27,7 @@ Dark Gray	Text (for better contrast)	#2C3E50	 */
         --gold: #D4AF37;        /* Deep gold for important figures */
         --white:#0D1117;       /* Near-white for text (not pure white, to avoid eye strain) */
         --dark-grey: #8B949E;   /* Lighter gray for secondary text */
- 
+
       /* Dark navy-gray for text contrast */
  
     
@@ -62,6 +62,18 @@ header {
     align-items: center;
 
 }
+.setting_menu{
+    height: 60vh;
+    width: 80vw;
+    border-radius: 25px;
+    background-color: var(--soft_gray);
+    position: absolute;
+    top: 55px;
+    left: 30px;
+    border: 3px solid var(--light_blue);
+    visibility: hidden;
+}
+
 
 .main_list {
     width: 50vw;
@@ -361,14 +373,56 @@ header {
     /* margin: 0 0 0 135px; */
 }
 
-.setting_menu{
-    height: 60vh;
-    width: 80vw;
-    border-radius: 25px;
-    background-color: var(--soft_gray);
+#close{
+    color: var(--soft_gray);
+    height: 30px;
+    width: 30px;
+    font-size: 1.5rem;
+    background-color: var(--dark_blue);
     position: absolute;
-    top: 55px;
-    left: 30px;
-    border: 3px solid var(--light_blue);
+    right: 5px;
+    top: 5px;
+    border: none;
+    border-radius: 20px;
+}
+.setting_menu h1{
+    color: var(--dark_blue);
+    text-align: center;
+}
+.setting_menu p {
+    color: var(--dark_blue);
+    font-weight: 600;
+    margin: 0 0 0 10px;
+    display: inline-block;
+}
+#mode_butt{
+    height: 30px;
+    width:  60px;
+    border-radius: 20px;
+    margin:  0 0 0 20px;
+   
+}
+#sun{
+display: none;
+}
+.dark_mode #mode_butt{
+    background-color: var(--light_blue);
+    
+}
+
+.dark_mode #sun{
+    display: inherit;
+}
+.dark_mode .fa-moon{
     display: none;
 }
+#mode_butt i{
+  
+position: relative;
+font-size: 23px;
+}
+
+.dark_mode #mode_butt{
+    background-color:#4A90E2;
+}
+

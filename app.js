@@ -4,9 +4,9 @@ let Goal_Add_Button = document.querySelector(".add_goal");
 let Goal_Add_Window = document.querySelector(".add-goal-window");
 let add_form = document.querySelector(".add-transition-window form");
 let goal_form = document.querySelector(".add-goal-window form");
-let income = document.querySelector(".incomeamt").innerHTML = 0;
-let expense = document.querySelector(".expenceamt").innerHTML = 0;
-let saving = document.querySelector(".savingamt").innerHTML = 0;
+let income = (document.querySelector(".incomeamt") );
+let expense = (document.querySelector(".expenceamt") );
+let saving = (document.querySelector(".savingamt") );
 let transitions = [];
 let transaction_main = [];
 let goals = [];
@@ -27,9 +27,10 @@ visiblityon(Transition_Add_Button, Transition_Add_Window);
 
 window.onload = () => {
   // Ensure transactions have a default value
-  transitions = JSON.parse(localStorage.getItem("transactions")) || []; 
+  console.log(expense , income, saving)
+  transitions = JSON.parse(localStorage.getItem("transactions")) || [];
 
-  income.innerHTML = JSON.parse(localStorage.getItem("income")) || 0;
+  income.innerHTML =  JSON.parse(localStorage.getItem("income")) || 0;
   expense.innerHTML = JSON.parse(localStorage.getItem("expense")) || 0;
   saving.innerHTML = JSON.parse(localStorage.getItem("saving")) || 0;
 
@@ -50,7 +51,6 @@ window.onload = () => {
     body.classList.remove("dark_mode");
   }
 };
-
 
 document.addEventListener("click", (event) => {
   let body = document.body;
@@ -143,18 +143,16 @@ function updatingUI() {
 
 function changeamount(transaction) {
   if (transaction.trans_type == "income") {
-    income  =
-      parseInt(transaction.amount) + parseInt(income );
+    income.innerHTML = parseInt(transaction.amount) + parseInt(income.innerHTML);
   } else {
-    expense  =
-      parseInt(transaction.amount) + parseInt(expense );
+    expense.innerHTML = parseInt(transaction.amount) + parseInt(expense.innerHTML);
   }
 
-  saving = parseInt(income ) - parseInt(-expense );
+  saving.innerHTML = parseInt(income.innerHTML) - parseInt(-expense.innerHTML);
 
-  localStorage.setItem("expense", JSON.stringify(expense ));
-  localStorage.setItem("income", JSON.stringify(income ));
-  localStorage.setItem("saving", JSON.stringify(saving ));
+  localStorage.setItem("expense", JSON.stringify(expense.innerHTML));
+  localStorage.setItem("income", JSON.stringify(income.innerHTML));
+  localStorage.setItem("saving", JSON.stringify(saving.innerHTML));
   updateChart();
 }
 
@@ -193,7 +191,7 @@ goal_form.addEventListener("submit", (e) => {
 
   goals.push(goal);
 
-  localStorage.setItem("goal",JSON.stringify(goals));
+  localStorage.setItem("goal", JSON.stringify(goals));
   updating_goal_UI();
   goal_form.reset();
 });
@@ -261,7 +259,6 @@ function updateSaving(index) {
   } else {
     alert("Enter a valid amount");
   }
-  
 
   let amount = -value;
   console.log(value);
@@ -274,7 +271,7 @@ function updateSaving(index) {
   transitions.push(transition);
   transaction_main.push(transition);
   localStorage.setItem("transactions", JSON.stringify(transitions));
-  changeamount(transition, income);
+  changeamount(transition);
   updatingUI();
   div.style.width = (goals[index].saving / amountValue) * 100 + "%";
 }
@@ -288,9 +285,9 @@ function main_trans_add() {
     li.style.color = transition.amount > 0 ? "#27AE60" : "#E74C3C";
   });
 }
-document.querySelector("#reset").addEventListener("click",()=>{
+document.querySelector("#reset").addEventListener("click", () => {
   alert("are you sure");
-  localStorage.clear()
-  
+  localStorage.clear();
+
   location.reload();
-})
+});

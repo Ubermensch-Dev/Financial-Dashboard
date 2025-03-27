@@ -14,7 +14,10 @@ let setting = document.querySelector(".setting_but");
 let setting_div = document.querySelector(".setting_but div")
 let on = false;
 let body = document.querySelector("body");
-let i = document.querySelectorAll("i")
+let i = document.querySelectorAll("i");
+let name_button = document.querySelector("#name_butt");
+let name_of_user = document.querySelector("#heading");
+
 
 setting.addEventListener("click",()=>{
 
@@ -28,7 +31,7 @@ visiblityon(Transition_Add_Button, Transition_Add_Window);
 window.onload = () => {
   let body = document.body;
   let on = JSON.parse(localStorage.getItem("on")) || false; // Convert string to boolean
-
+name_of_user.innerHTML = localStorage.getItem("name");
   if (on) {
     body.classList.add("dark_mode");
   } else {
@@ -37,10 +40,17 @@ window.onload = () => {
 };
 
 document.addEventListener("click", (event) => {
-  console.log(event.target);
+ 
     let body = document.body;
   
+
   let mode_but = document.querySelector("#mode_butt");
+
+  if(event.target === name_button){
+    let username = document.querySelector("#username").value;
+name_of_user.innerHTML = username +"'s Finance";
+localStorage.setItem("name" , name_of_user.innerHTML);
+  }
 
   if (event.target === mode_but || [...i].some(o => o === event.target)) {
     let on = body.classList.toggle("dark_mode"); // Toggle class

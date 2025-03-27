@@ -16,6 +16,10 @@ Dark Gray	Text (for better contrast)	#2C3E50	 */
     --white: #FFFFFF;
     --dark-grey: #2C3E50;
 }
+button{
+    outline: none;
+    border: none;
+}
 .dark_mode{
 
 
@@ -392,7 +396,7 @@ header {
 .setting_menu p {
     color: var(--dark_blue);
     font-weight: 600;
-    margin: 0 0 0 10px;
+
     display: inline-block;
 }
 #mode_butt{
@@ -407,6 +411,11 @@ display: none;
 }
 .dark_mode #mode_butt{
     background-color: var(--light_blue);
+    
+}
+
+.dark_mode #name_butt{
+    background-color:#4A90E2;
     
 }
 
@@ -425,4 +434,20 @@ font-size: 23px;
 .dark_mode #mode_butt{
     background-color:#4A90E2;
 }
+#username{
+   
+    height: 30px;
+    width: 160px;
+ border: var(--dark_blue) 1px solid;
 
+border-radius: 20px;
+}
+#mode_div , #username_div{
+    margin: 20px 10px;
+}
+#name_butt{
+
+height: 20px;
+width: 80px;
+border-radius:20px;
+}

@@ -447,3 +447,11 @@ height: 20px;
 width: 80px;
 border-radius:20px;
 }
+#reset{
+    height: 30px;
+    width: 100px;
+    position: absolute;
+    border-radius:20px ;
+    left: 20px;
+    bottom: 10px;
+}

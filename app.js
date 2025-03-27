@@ -289,6 +289,7 @@ function main_trans_add() {
   });
 }
 document.querySelector("#reset").addEventListener("click",()=>{
+  alert("are you sure");
   localStorage.clear()
   
   location.reload();

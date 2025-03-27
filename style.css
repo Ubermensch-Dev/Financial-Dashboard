@@ -16,10 +16,6 @@ Dark Gray	Text (for better contrast)	#2C3E50	 */
     --white: #FFFFFF;
     --dark-grey: #2C3E50;
 }
-button{
-    outline: none;
-    border: none;
-}
 .dark_mode{
 
 
@@ -252,7 +248,7 @@ header {
 }
 
 .add-transition-window select {
-    background-color: var(--white);
+    background-color: #FFFFFF;
 }
 
 

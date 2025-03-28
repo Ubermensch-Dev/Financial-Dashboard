@@ -1,0 +1,15 @@
+@media (max-width :700px){
+   
+   #heading{
+      display: none;
+   }
+   .main_list{
+      width: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+  
+   }
+
+   }

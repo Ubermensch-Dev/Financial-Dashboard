@@ -15,22 +15,34 @@ Dark Gray	Text (for better contrast)	#2C3E50	 */
     --gold: #F4C542;
     --white: #FFFFFF;
     --dark-grey: #2C3E50;
+    --gold-shadow:rgb(244,197,66 , 0.5);
+    --grenn-shadow:rgb(39,174,96,0.5);
+    --red-shadow:rgb(231,76,60,0.5);
 }
-.dark_mode{
+
+.dark_mode {
 
 
-        --dark_blue:  #3A7ABD;   /* Almost black-blue for background */
-        --light_blue: #F0F6FC ;   /* Vibrant blue for buttons & highlights */
-        --soft_gray: #161B22;   /* Darker gray for card backgrounds */
-        --green: #1F8D4B;       /* Bold green for income/positive values */
-        --red: #C0392B;         /* Strong red for expenses/negative values */
-        --gold: #D4AF37;        /* Deep gold for important figures */
-        --white:#0D1117;       /* Near-white for text (not pure white, to avoid eye strain) */
-        --dark-grey: #8B949E;   /* Lighter gray for secondary text */
+    --dark_blue: #3A7ABD;
+    /* Almost black-blue for background */
+    --light_blue: #F0F6FC;
+    /* Vibrant blue for buttons & highlights */
+    --soft_gray: #161B22;
+    /* Darker gray for card backgrounds */
+    --green: #1F8D4B;
+    /* Bold green for income/positive values */
+    --red: #C0392B;
+    /* Strong red for expenses/negative values */
+    --gold: #D4AF37;
+    /* Deep gold for important figures */
+    --white: #0D1117;
+    /* Near-white for text (not pure white, to avoid eye strain) */
+    --dark-grey: #8B949E;
+    /* Lighter gray for secondary text */
 
-      /* Dark navy-gray for text contrast */
- 
-    
+    /* Dark navy-gray for text contrast */
+
+
 
 }
 
@@ -62,7 +74,8 @@ header {
     align-items: center;
 
 }
-.setting_menu{
+
+.setting_menu {
     height: 60vh;
     width: 80vw;
     border-radius: 25px;
@@ -71,7 +84,11 @@ header {
     top: 55px;
     left: 30px;
     border: 3px solid var(--light_blue);
+
+    opacity: 0;
+    transform: scale(0.9);
     visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.2s;
 }
 
 
@@ -211,7 +228,11 @@ header {
     background-color: var(--soft_gray);
     border-radius: 20px;
 
+
+    opacity: 0;
+    transform: scale(0.9);
     visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.2s;
 }
 
 .add-transition-window form,
@@ -253,8 +274,11 @@ header {
 
 
 .visiblity {
+    opacity: 1;
+    transform: scale(1);
     visibility: visible;
 }
+
 
 .transition-list {
 
@@ -321,7 +345,7 @@ header {
     position: absolute;
     right: 0;
     margin: 0 0px;
-    visibility:hidden;  
+    visibility: hidden;
     display: flex;
     height: 4vh;
 }
@@ -373,7 +397,7 @@ header {
     /* margin: 0 0 0 135px; */
 }
 
-#close{
+#close {
     color: var(--soft_gray);
     height: 30px;
     width: 30px;
@@ -385,73 +409,106 @@ header {
     border: none;
     border-radius: 20px;
 }
-.setting_menu h1{
+
+.setting_menu h1 {
     color: var(--dark_blue);
     text-align: center;
 }
+
 .setting_menu p {
     color: var(--dark_blue);
     font-weight: 600;
 
     display: inline-block;
 }
-#mode_butt{
+
+#mode_butt {
     height: 30px;
-    width:  60px;
+    width: 60px;
     border-radius: 20px;
-    margin:  0 0 0 20px;
-   
-}
-#sun{
-display: none;
-}
-.dark_mode #mode_butt{
-    background-color: var(--light_blue);
-    
+    margin: 0 0 0 20px;
+
 }
 
-.dark_mode #name_butt{
-    background-color:#4A90E2;
-    
-}
-
-.dark_mode #sun{
-    display: inherit;
-}
-.dark_mode .fa-moon{
+#sun {
     display: none;
 }
-#mode_butt i{
-  
-position: relative;
-font-size: 23px;
+
+.dark_mode #mode_butt {
+    background-color: var(--light_blue);
+
 }
 
-.dark_mode #mode_butt{
-    background-color:#4A90E2;
+.dark_mode #name_butt {
+    background-color: #4A90E2;
+
 }
-#username{
-   
+
+.dark_mode #sun {
+    display: inherit;
+}
+
+.dark_mode .fa-moon {
+    display: none;
+}
+
+#mode_butt i {
+
+    position: relative;
+    font-size: 23px;
+}
+
+.dark_mode #mode_butt {
+    background-color: #4A90E2;
+}
+
+#username {
+
     height: 30px;
     width: 160px;
- border: var(--dark_blue) 1px solid;
+    border: var(--dark_blue) 1px solid;
 
-border-radius: 20px;
+    border-radius: 20px;
 }
-#mode_div , #username_div{
+
+#mode_div,
+#username_div {
     margin: 20px 10px;
 }
-#name_butt{
 
-height: 20px;
-width: 80px;
-border-radius:20px;
+#name_butt {
+
+    height: 20px;
+    width: 80px;
+    border-radius: 20px;
 }
-#reset{
+
+#reset {
     height: 30px;
     width: 100px;
     position: absolute;
-    border-radius:20px ;
+    border-radius: 20px;
     left: 20px;
     bottom: 10px;
 }
+
+.money_tab {
+    transition: all 0.3s ease;
+}
+
+
+.saving:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px var(--gold-shadow);
+}
+.expense:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px var(--red-shadow);
+
+}
+/* .setting_menu{
+    opacity: 0;
+    transform: scale(0.9);
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.2s;
+} */

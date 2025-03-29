@@ -56,6 +56,7 @@ document.addEventListener("click", (event) => {
   let body = document.body;
 
   let mode_but = document.querySelector("#mode_butt");
+  console.log(event.target)
 
   if (event.target === name_button) {
     let username = document.querySelector("#username").value;
@@ -67,10 +68,10 @@ document.addEventListener("click", (event) => {
     let on = body.classList.toggle("dark_mode"); // Toggle class
     localStorage.setItem("on", JSON.stringify(on));
   }
-
+let close = document.querySelector("#close")
   if (
     (!setting_div.contains(event.target) && !setting.contains(event.target)) ||
-    event.target === close
+    event.target == close 
   ) {
     setting_div.classList.remove("visiblity");
   }

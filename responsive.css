@@ -12,4 +12,46 @@
   
    }
 
+   .pie_charts{
+      flex-direction: column;
+      height: 90vh;
+      width: 100vw;
+      display: flex;
+
    }
+   .money_div{
+      width: 100vw;
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+   }
+   .money_tab{
+      width: 60vw;
+      height: 15vh;
+      margin: 0 0  20px 0 ;
+   }
+   .pie{
+      margin-top: 5vh;
+      width: 90vw;
+ 
+   }
+   .button_adding{
+      width: 60%;
+      height: 50px;
+   }
+   .button_text{
+      font-size: 1.6rem;
+   }
+   .add_button{
+      width: 10%;
+      height: 60%;
+      font-size: 2.5rem;
+   }
+   .add-transition-window,.add-goal-window{
+   width: 90%;   
+
+   }
+   
+   }
+   

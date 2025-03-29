@@ -497,7 +497,10 @@ header {
     transition: all 0.3s ease;
 }
 
-
+.income:hover{
+    transform:scale(1.05);
+    box-shadow:0px 8px 20px var(--grenn-shadow) ;
+}
 .saving:hover {
     transform: scale(1.05);
     box-shadow: 0px 8px 20px var(--gold-shadow);
